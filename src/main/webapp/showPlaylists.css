@@ -1,0 +1,148 @@
+@charset "ISO-8859-1";
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: "Poppins";
+    background-color: #191919;
+    color: aliceblue;
+
+}
+
+navbar{
+    width: 100%;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid black;
+    box-shadow: 0px 0px 3px 4px #1ed760;
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+    padding: 1rem 0;
+    margin: 0 auto;
+}
+
+.navbar form input{
+    padding: 0.5rem 1rem;
+    text-transform: uppercase;
+    font-family: inherit;
+    background-color: #1ed760;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.user{
+    color: #1ed760;
+}
+
+.playlistsContainer{
+    border: 2px solid grey;
+    padding: 3rem;
+    max-width: 1000px;
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin: 5rem 0;
+    margin-top: 0;
+    border-radius: 5px;
+}
+
+.playlist{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 30px;
+    border: 2px solid grey;
+    width: 100%;
+    padding: 1rem 1rem;
+    margin: 0 auto;   
+    transition: all 0.5s; 
+}
+
+.playlist div h1{
+    font-size: 1.7rem;
+}
+.playlist div p{
+    font-size: 1rem;
+}
+
+.playlist:hover{
+	background-color: #3c3c3c;
+	cursor: pointer;
+}
+
+.playlistTracks{
+    border: 2px solid grey;
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+.singlePlaylist .playlist.active + .playlistTracks{
+    height: max-content;
+    padding: 1rem;
+}
+
+/*Track Style */
+
+.track{
+    border-bottom: 1px solid grey;
+    padding-bottom: 1rem;
+    display: flex;
+    margin-bottom: 1rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.trackInfo{
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    width: 90%;
+}
+
+.trackInfo div h1{
+    font-size: 1rem;
+}
+
+.trackInfo div p{
+    font-size: 0.8rem;
+}
+
+
+.trackInfo img{
+    width: 64px;
+    height: 64px;
+}
+
+/* buttons */
+
+.trackInfo + div{
+    width: max-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.playBtn, .downloadBtn{
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    margin-left: 1.8rem;
+    color: #1ed760;
+}

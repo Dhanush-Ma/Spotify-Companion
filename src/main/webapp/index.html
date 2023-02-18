@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="ISO-8859-1" />
+    <title>Spotify Companion</title>
+    <link rel="stylesheet" href="index.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+      integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="header">
+      <img
+        src="https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_RGB_Green.png"
+        width="400"
+      />
+      <h1>Download your Spotify Playlists songs with a click.</h1>
+    </div>
+    <form name="form">
+      <div>
+        <input
+          type="text"
+          placeholder="Enter you Spotify User ID"
+          name="userID"
+        />
+        <i
+          class="fa-sharp fa-solid fa-circle-question help"
+          onmouseover="show()"
+          onmouseleave="remove()"
+        ></i>
+        <img src="img.png" id="helpImg" alt="help" />
+      </div>
+      <input type="password" placeholder="Password" name="password" />
+      <input type="button" value="Login" onclick="sendFormData()"/>
+    </form>
+      <p>Don't have an account? <a href="signIn.html">Sign In</a></p>
+      <div id="overlay">
+      <div class="cv-spinner">
+        <span class="spinner"></span>
+        <p>Getting your Playlists! Please Wait...</p>
+      </div>
+    </div>
+    <script type="text/javascript">
+      function show() {
+        document.getElementById("helpImg").style.visibility = "visible";
+      }
+      function remove() {
+        document.getElementById("helpImg").style.visibility = "hidden";
+      }
+
+      
+      function sendFormData(){
+    	  let xmlhttp = new XMLHttpRequest();
+    	  document.getElementsByTagName("body").innerHTML = "<div>Spinner</div>"
+    	  xmlhttp.onreadystatechange = function () {
+    	    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+    	    	document.getElementById("overlay").style.display = "none";
+
+    	      window.location.href = "http://localhost:8081/Spotify_API/showPlaylists.jsp"
+    	    }
+    	    else if (xmlhttp.readyState == 4 && xmlhttp.status == 400) {
+    	    	document.getElementById("overlay").style.display = "none";
+    	    	  alert("Wrong Password");
+    	    }
+    	    else if(xmlhttp.readyState == 4  && xmlhttp.status == 401) {
+    	    	document.getElementById("overlay").style.display = "none";
+    				alert("Invalid User Id! Try to Sign In");
+    	    }
+    	    else{
+    	    	document.getElementById("overlay").style.display = "block";
+    	    }
+    	  };
+
+    	  let params = "userID=" + document.form.userID.value + "&password=" + document.form.password.value;
+    	  xmlhttp.open("POST", "playlists", true);
+    	  xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    	  xmlhttp.send(params)
+      }
+      
+    </script>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+package com.spotify;
+
+public class Credentials {
+	public static final String accessToken = "BQDJ_LDuX_HQdvbMIO26_rLrDLIn1l9Www6doYq1vU9hrAY6wNY5vPgiFIoV0-Ggt4Lde0Pz2Ag28a8euu0iFrEyxEI_UW1ibkVmhAA5n2xxthic7HNAU9k31vD_hsrpib_lBSmkUvn2sr-hjxPUSD2XgmeNOHrmHEABOFSUgkRjimueeqVPqujLXb4yju25ht2y5D4ya88r-3wDa7bT";	
+	public static final String youtubeApiToken = "AIzaSyDxedHAKpLPWGCDwajbxQQMAWaRvae0m8c";
+	}
